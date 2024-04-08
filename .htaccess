@@ -11,7 +11,7 @@ RewriteRule ^(.*)$ https://dg.samrl.org/$1 [R=301,L]
 #remove extension html
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ bel.htm [NC,L]
+RewriteRule ^(.*)$ home.html [NC,L]
 
 
 
@@ -21,6 +21,8 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php
 
 
+# Block Directory Listing
+OPTIONS -INDEXES
 
 # يمنع ما يلي .htaccess ملف
 <files .htaccess>
@@ -35,7 +37,7 @@ deny from all
 </files>
 
 RewriteCond %{REQUEST_FILENAME} =home
-RewriteRule ^(.*)\.php$ bel.htm [NC,L]
+RewriteRule ^(.*)\.php$ home.html [NC,L]
 
 RewriteRule ^(.*)\.html$  $1.php [NC,L]
 
