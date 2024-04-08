@@ -1,1 +1,76 @@
-isis
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.dg\.samrl\.org$ [NC]
+RewriteRule ^(.*)$ https://dg.samrl.org/$1 [R=301,L]
+
+#remove extension html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ home.html [NC,L]
+
+
+
+#remove extension php
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^(.*)$ $1.php
+
+
+# Block Directory Listing
+OPTIONS -INDEXES
+
+# يمنع ما يلي .htaccess ملف
+<files .htaccess>
+order allow,deny
+deny from all
+</files>
+
+# يمنع ما يلي .htaccess ملف
+<files htaccess>
+order allow,deny
+deny from all
+</files>
+
+RewriteCond %{REQUEST_FILENAME} =home
+RewriteRule ^(.*)\.php$ home.html [NC,L]
+
+RewriteRule ^(.*)\.html$  $1.php [NC,L]
+
+
+RewriteRule ^(.*)\.xml$  $1.php [NC,L]
+
+
+
+
+
+#Specify a default home page (index page) 
+
+
+## Enable GZIP Compression 
+## Compress HTML, CSS, JavaScript, Text, XML and MP4 videos
+<IfModule mod_deflate.c>
+ AddOutputFilterByType DEFLATE text/html
+ AddOutputFilterByType DEFLATE text/css 
+ AddOutputFilterByType DEFLATE text/javascript
+ AddOutputFilterByType DEFLATE text/plain
+ AddOutputFilterByType DEFLATE text/xml
+ AddOutputFilterByType DEFLATE video/mp4
+</IfModule>
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 68.183.145.63
+deny from 213.159.213.137
+deny from 35.197.110.151
+deny from 66.249.73.136
+deny from 66.249.73.140
+deny from 157.230.248.74
+deny from 69.171.251.16
+deny from 209.17.97.82
+deny from 68.183.147.213
