@@ -1,2 +1,12 @@
-RewriteEngine on
-RewriteRule ^$ /bel.htm [L]
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.dg\.samrl\.org$ [NC]
+RewriteRule ^(.*)$ https://dg.samrl.org/$1 [R=301,L]
+
+#remove extension html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ bel.htm [NC,L]
