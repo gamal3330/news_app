@@ -11,7 +11,7 @@ RewriteRule ^(.*)$ https://dg.samrl.org/$1 [R=301,L]
 #remove extension html
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ home.html [NC,L]
+RewriteRule ^(.*)$ bel.htm [NC,L]
 
 
 
@@ -35,7 +35,7 @@ deny from all
 </files>
 
 RewriteCond %{REQUEST_FILENAME} =home
-RewriteRule ^(.*)\.php$ home.html [NC,L]
+RewriteRule ^(.*)\.php$ bel.htm [NC,L]
 
 RewriteRule ^(.*)\.html$  $1.php [NC,L]
 
